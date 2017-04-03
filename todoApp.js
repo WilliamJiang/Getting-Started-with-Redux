@@ -1,3 +1,8 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { combineReducers, createStore } from 'redux';
+import { connect, Provider } from 'react-redux';
+
 const todo = (state, action) => {
   switch (action.type) {
     case 'ADD_TODO':
@@ -68,14 +73,11 @@ const toggleTodo = (id) => {
   }
 }
 
-const { combineReducers } = Redux;
-
 const todoApp = combineReducers({
   todos,
   visibilityFilter
 });
 
-const { Component } = React;
 
 const Link = ({
   active,
@@ -96,8 +98,6 @@ const Link = ({
     </a>
   );
 };
-
-const { connect } = ReactRedux;
 
 const FilterLink = connect(
   (state, ownProps) => {
@@ -226,10 +226,7 @@ const TodoApp = () => (
     <Footer />
   </div>
 );
-
 //const Provider = {props} => props.children;
-const { Provider } = ReactRedux;
-const { createStore } = Redux;
 
 ReactDOM.render(
   <Provider store={createStore(todoApp)}>
@@ -237,3 +234,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+export default TodoApp;
