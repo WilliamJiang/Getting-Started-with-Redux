@@ -11,9 +11,12 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "faker": "^4.1.0",
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
+    "react-router": "^4.0.0",
     "redux": "^3.6.0"
   },
   "devDependencies": {

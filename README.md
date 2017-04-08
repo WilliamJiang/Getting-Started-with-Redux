@@ -57,9 +57,29 @@ I make it several steps branches to easily going through:
 3. branch `step-6` is the final:
   work through all 30 tutorials, it works fine in jsbin.
 
-4. branch `step-7`:
+### 4. branch `step-7`:
   Add babel, webpack to generate a bundle.js, to make it works as an app.
 
+
+### 5. branch `step-8`:
+  brand new version:  step-8: different from step-7. out of original todos. add step-8.js to test redux. it basically works.
+
+### 6. step-9
+
+a simple App for CRUD: list fake-people on the fly.
+
+- sorting People  (mapDispatchToProps)
+- pagination      (mapDispatchToProps)
+- add Person      (mapDispatchToProps)
+- delete Person   (dispatch)
+- load People     (mapDispatchToProps)
+
+It works properly. Good Stuff.
+
+
+### 7. step-10:
+
+react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
 
 
 ## Advance

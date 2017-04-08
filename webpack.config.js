@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    './test-04-08.js'
+    './step-9.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
