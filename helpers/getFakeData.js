@@ -1,6 +1,9 @@
-import faker from 'faker'
+// loads only de locale
+import faker from 'faker/locale/en'
 
 export const loadPeople = (no) => {
+
+    faker.locale = "en"
     try {
         no = no || 10;
         let people = [];
@@ -24,6 +27,7 @@ export const loadPeople = (no) => {
 }
 
 export const addPerson = () => {
+    faker.locale = "en";
     try {
         let person = {};
 

@@ -115,9 +115,13 @@ const Detail = ({idx, person, onClickName, deletePerson}) => (
 
 
 class List extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { loadNumber: 10 }
+    }
 
     componentDidMount() {
-        const people = loadPeople(10);
+        const people = loadPeople(this.state.loadNumber);
         return this.props.loadAction(people);
     }
 
@@ -180,6 +184,7 @@ const store = createStore(reducers);
 const mapStateToProps = (state) => {
     return {people: state}
 }
+// I still want to use `dispatch` in components.
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         loadAction, prevAction, nextAction, sortAction, addAction, dispatch
