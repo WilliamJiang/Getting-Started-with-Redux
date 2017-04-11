@@ -74,12 +74,23 @@ a simple App for CRUD: list fake-people on the fly.
 - delete Person   (dispatch)
 - load People     (mapDispatchToProps)
 
+- faker.js to generate JSON.
+- bootstrap table style.
+- lodash to sort.
+
 It works properly. Good Stuff.
 
 
 ### 7. step-10:
 
 react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
+
+
+```bash
+  npm i -S rxjs@5
+```
+
+redux-form
 
 
 ## Advance
@@ -90,3 +101,12 @@ react-router vs. react-router-dom: https://reacttraining.com/react-router/web/gu
 4. use `webpack-dev-server` to start
 5. .babelrc and webpack.config.js all needed.
 6. plugin `transform-object-rest-spread` is for {...state}
+
+
+## Reference:
+
+
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+- https://redux-observable.js.org/
+- http://reactivex.io/rxjs/manual/tutorial.html#react
+- http://redux-form.com/6.6.2/
