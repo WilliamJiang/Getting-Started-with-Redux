@@ -90,14 +90,16 @@ npm install redux-devtools
 
 ### 10. step-10:
 
-react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
 
+ReactiveX, RxJs example.
 
 ```bash
   npm i -S rxjs@5
 ```
 
-redux-form
+- create src/ folder, put the .js into, easily search and manage.
+- react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
+- redux-form
 
 
 ## Advance
@@ -109,6 +111,9 @@ redux-form
 5. .babelrc and webpack.config.js all needed.
 6. plugin `transform-object-rest-spread` is for {...state}
 
+7. add more steps for easy usage:
+- step-1: simple counter with `subscribe` and no component.
+- step-2: simple counter with component
 
 ## Reference:
 

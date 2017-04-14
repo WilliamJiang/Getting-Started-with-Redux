@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, bindActionCreators } from 'redux';
 import { Provider, connect } from 'react-redux';
 import _ from 'lodash'
-import { loadPeople, addPerson } from './helpers/getFakeData'
+import { loadPeople, addPerson } from './../helpers/getFakeData'
 
 
 const loadAction = (people) => ({
