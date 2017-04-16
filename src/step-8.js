@@ -1,72 +1,103 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux';
-import { Provider, connect } from 'react-redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { Provider, connect } from 'react-redux'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { reducer as formReducer } from 'redux-form'
+import thunk from 'redux-thunk'
+import promise from 'redux-promise'
+import Helper from './components/'
 
-const comments = [
-    'state',
-    'action',
-    'reducer',
-    'dispatching function',
-    'action creator',
-    'async action',
-    'middleware',
-    'store',
-    'store creator',
-    'store enhancer'
-];
+import 'react-bootstrap-table/dist/react-bootstrap-table.min.css'
 
-const reducers = (state, action) => {
-    switch (action.type) {
-        case 'ADD_COMMENT':
-            return [...state, action.text]
-    }
-    return state;
+//2. actionCreator:
+const loadComments = () => ({type: 'LOAD_COMMENTS'});
+const addComment = (text) => {
+  console.log(text);
+  return {type: 'ADD_COMMENT', payload: text}
 }
 
-const Detail = ({comment}) => (
-    <li className="list-group-item text-capitalize">
-        <i className="fa fa-comment-o" aria-hidden="true"></i>{comment}
-    </li>
-)
+//3. reducer:
+const commentReducer = (state=[], action) => {
+  switch (action.type) {
+    case 'ADD_COMMENT':
+      return [...state, action.payload]
+    case 'LOAD_COMMENTS':
+      return state;
+  }
+  return state;
+}
 
+//5. component
 class List extends Component {
-    render() {
-        return (
-            <div className="container">
-                <h2>List</h2>
+  componentDidMount() {
+    this.props.loadComments();
+  }
 
-                <div className="row">
-                    <ul className="list-group">
-                        {this.props.comments.map((comment, i) => <Detail key={i} comment={comment}/>)}
-                    </ul>
-                </div>
-                <p className="well">{this.props.done ? this.props.author : 'not available'}</p>
-            </div>
-        )
-    }
+  render() {
+    let { comments } = this.props;
+    return (
+      <div className="row">
+        <BootstrapTable data={comments} striped={true} hover={true}>
+          <TableHeaderColumn dataField="name" isKey={true} dataSort={true}>Name</TableHeaderColumn>
+          <TableHeaderColumn dataField="post" dataSort={true}>Post</TableHeaderColumn>
+          <TableHeaderColumn dataField="date" dataSort={true}>Date</TableHeaderColumn>
+        </BootstrapTable>
+      </div>
+    )
+  }
 }
 
-const store = createStore(reducers, comments);
+//7. bind store with props and methods
+List = connect(
+  (state) => ({comments: state.comments}),
+  {loadComments, addComment}
+)(List);
 
-store.dispatch({
-    type: 'ADD_COMMENT',
-    text: 'what is the return from mapStateToProps?'
-});
 
-
-List = connect((state) => ({comments: state}))(List);
-
-ReactDOM.render(
-    <Provider store={store}>
-        <List
-            done={true}
-            author='william jiang'
-            />
-    </Provider>,
-    document.getElementById('root')
+// in case App = List + AddForm + Footer + Navigator...
+const App = () => (
+  <div className="container">
+    <Helper.Header />
+    <Main />
+    <Helper.Footer done={true} author='william jiang'/>
+  </div>
+)
+// add More
+const Main = () => (
+  <main style={{marginTop:60}}>
+    <Switch>
+      <Route exact path='/' component={Helper.Home}/>
+      <Route path='/list' component={List}/>
+      <Route path='/about' component={Helper.About}/>
+      <Route path='/roster' component={Helper.Roster}/>
+      <Route path='/schedule' component={Helper.Schedule}/>
+      <Route path='/login' component={Helper.LoginForm}/>
+    </Switch>
+  </main>
 )
 
-/** TODO:
- * font-awesome
- */
+
+//6. store and dispatch
+let initialComments = Helper.getComments();
+let persistance = { comments: initialComments};
+const rootReducer = combineReducers({
+  comments: commentReducer,
+  form: formReducer
+});
+const store = createStore(
+  rootReducer,
+  {comments: initialComments},
+  applyMiddleware(thunk, promise)
+);
+
+//8. render
+ReactDOM.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('root')
+);
