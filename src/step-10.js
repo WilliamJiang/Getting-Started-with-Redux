@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, bindActionCreators, combineReducers } from 'redux';
 import { Provider, connect } from 'react-redux';
 
-import Rx from 'rxjs/Rx'
+import Rx from '../node_modules/rxjs/Rx.d'
 import { createEpicMiddleware, combineEpics } from 'redux-observable'
 
 const PING = 'PING';
