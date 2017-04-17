@@ -23,8 +23,8 @@ export const Header = () => (
         <li><Link to='/login'>Login</Link></li>
         <li><Link to='/list'>List</Link></li>
         <li><Link to='/about'>About</Link></li>
-        <li><Link to='/roster'>Roster</Link></li>
-        <li><Link to='/schedule'>Schedule</Link></li>
+        <li><Link to='/todos'>Todos</Link></li>
+        <li><Link to='/delegate'>Delegate</Link></li>
       </ul>
     </nav>
   </header>
@@ -40,7 +40,3 @@ export const Footer = ({footer}) => (
 export const Home = () => <h2>Home</h2>
 
 export const About = () => <h2>About</h2>
-
-export const Roster = () => <h2>Roster</h2>
-
-export const Schedule = () => <h2>Schedule</h2>

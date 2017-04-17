@@ -36,7 +36,7 @@ const addAction = () => ({
     type: 'ADD_PERSON'
 });
 
-const reducers = (state, action) => {
+export const reducers = (state=[], action) => {
     switch (action.type) {
         case 'LOAD_PEOPLE':
         case 'PREV_PEOPLE':
@@ -179,10 +179,8 @@ class List extends Component {
     }
 }
 
-const store = createStore(reducers);
-
 const mapStateToProps = (state) => {
-    return {people: state}
+    return {people: state.people}
 }
 // I still want to use `dispatch` in components.
 const mapDispatchToProps = (dispatch) => {
@@ -193,9 +191,15 @@ const mapDispatchToProps = (dispatch) => {
 
 List = connect(mapStateToProps, mapDispatchToProps)(List);
 
-ReactDOM.render(
+export default List;
+/**
+ * comment so used for main.js
+ *
+ const store = createStore(reducers);
+ ReactDOM.render(
     <Provider store={store}>
         <List />
     </Provider>,
     document.getElementById('root')
 )
+*/

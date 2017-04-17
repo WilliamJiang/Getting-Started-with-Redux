@@ -5,8 +5,6 @@ import { Provider, connect } from 'react-redux'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { reducer as formReducer } from 'redux-form'
-import thunk from 'redux-thunk'
-import promise from 'redux-promise'
 import Helper from './components/'
 
 import 'react-bootstrap-table/dist/react-bootstrap-table.min.css'
@@ -71,7 +69,6 @@ const Main = () => (
       <Route exact path='/' component={Helper.Home}/>
       <Route path='/list' component={List}/>
       <Route path='/about' component={Helper.About}/>
-      <Route path='/roster' component={Helper.Roster}/>
       <Route path='/schedule' component={Helper.Schedule}/>
       <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
@@ -86,11 +83,7 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   form: formReducer
 });
-const store = createStore(
-  rootReducer,
-  {comments: initialComments},
-  applyMiddleware(thunk, promise)
-);
+const store = createStore(rootReducer);
 
 //8. render
 ReactDOM.render(

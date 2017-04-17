@@ -3,9 +3,7 @@ import {
   Header,
   Footer,
   Home,
-  About,
-  Roster,
-  Schedule
+  About
 } from './common';
 import LoginForm from './loginForm'
 
@@ -15,7 +13,5 @@ export default {
   Footer,
   Home,
   About,
-  Roster,
-  Schedule,
   LoginForm
 }

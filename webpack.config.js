@@ -1,10 +1,25 @@
 var path = require('path');
 var webpack = require('webpack');
 
+const SOURCE_DIR = 'src';
+
+const getSrcEntry = (src_path => {
+  var appPath = path.join(__dirname, src_path);
+  const entries = {
+    '8': 'step-8.js',
+    '9': 'step-9.js',
+    '10': 'step-10.js',
+    'todo': 'todoApp.js',
+    'main': 'main.js'
+  }
+
+  return (entry) => appPath + '/' + entries[entry]
+})(SOURCE_DIR);
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
-    './src/step-8.js'
+    getSrcEntry('main')
   ],
   output: {
     path: path.join(__dirname, 'dist'),
