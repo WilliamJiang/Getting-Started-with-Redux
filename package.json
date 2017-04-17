@@ -1,8 +1,8 @@
 {
-  "name": "todos",
-  "version": "1.0.0",
+  "name": "myApp",
+  "version": "1.0.1",
   "description": "william wrote the steps of react-redux 30-cources and practised in jsbin.",
-  "main": "todoApp.js",
+  "main": "main.js",
   "scripts": {
     "start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,6 +14,7 @@
     "faker": "^4.1.0",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
+    "node-uuid": "^1.4.8",
     "react": "^15.4.2",
     "react-bootstrap-table": "^3.1.8",
     "react-dom": "^15.4.2",
@@ -27,8 +28,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "rxjs": "^5.3.0",
-    "superagent": "^3.5.2",
-    "uuid": "^3.0.1"
+    "superagent": "^3.5.2"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
