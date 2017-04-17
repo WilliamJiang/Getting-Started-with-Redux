@@ -20,11 +20,13 @@ export const Header = () => (
     <nav className="navbar navbar-inverse navbar-fixed-top">
       <ul className="nav navbar-nav">
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-        <li><Link to='/list'>List</Link></li>
-        <li><Link to='/about'>About</Link></li>
         <li><Link to='/todos'>Todos</Link></li>
-        <li><Link to='/delegate'>Delegate</Link></li>
+        <li><Link to='/list'>BootstrapTable</Link></li>
+        <li><Link to='/comments'>ReactBootstrapTable</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/typicode'>Typicode</Link></li>
+        <li><Link to='/github'>GitHub</Link></li>
+        <li><Link to='/login'>Login</Link></li>
       </ul>
     </nav>
   </header>

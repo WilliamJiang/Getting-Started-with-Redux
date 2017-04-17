@@ -90,6 +90,10 @@ npm install redux-devtools
 
 ### 10. step-10:
 
+### main:
+
+merge individual branches together by adding `tabs`
+
 
 ReactiveX, RxJs example.
 

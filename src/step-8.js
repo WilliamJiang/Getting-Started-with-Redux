@@ -17,7 +17,7 @@ const addComment = (text) => {
 }
 
 //3. reducer:
-const commentReducer = (state=[], action) => {
+const commentReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_COMMENT':
       return [...state, action.payload]
@@ -69,8 +69,6 @@ const Main = () => (
       <Route exact path='/' component={Helper.Home}/>
       <Route path='/list' component={List}/>
       <Route path='/about' component={Helper.About}/>
-      <Route path='/schedule' component={Helper.Schedule}/>
-      <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
   </main>
 )
@@ -78,7 +76,7 @@ const Main = () => (
 
 //6. store and dispatch
 let initialComments = Helper.getComments();
-let persistance = { comments: initialComments};
+let persistance = {comments: initialComments};
 const rootReducer = combineReducers({
   comments: commentReducer,
   form: formReducer
