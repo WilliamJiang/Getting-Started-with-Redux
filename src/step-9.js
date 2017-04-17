@@ -143,7 +143,7 @@ class List extends Component {
         }
         return (
             <div className="container">
-                <div className="well"><h2>The People List</h2>
+                <div className="well"><h2>Bootstrap Table</h2>
                     <button className="btn btn-info"
                             onClick={this.props.addAction}
                             style={{float:'right', paddingRight:30, marginTop:-20}}

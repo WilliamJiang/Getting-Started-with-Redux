@@ -5,9 +5,7 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider, connect } from 'react-redux'
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { reducer as formReducer } from 'redux-form'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import Helper from './components/'
@@ -15,6 +13,11 @@ import TodoApp, {todosReducer, todos, visibilityFilter} from './todoApp'
 import List, {reducers as step_9_reducers} from './step-9'
 import Typicode, {typicodeReducer} from './components/delegate_typicode'
 import Github, {githubReducer} from './components/delegate_github.js'
+import CommentList, {commentReducer} from './components/step8mini'
+// use step-8 as an independant app, or use main+step8mini together.
+// step8mini.js just copy step-8.js.
+import { reducer as formReducer } from 'redux-form'
+
 
 // add More
 const Main = () => (
@@ -26,6 +29,7 @@ const Main = () => (
       <Route path='/list' component={List}/>
       <Route path='/typicode' component={Typicode}/>
       <Route path='/github' component={Github}/>
+      <Route path='/comments' component={CommentList}/>
       <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
   </main>
@@ -49,6 +53,7 @@ const rootReducer = combineReducers({
   people: step_9_reducers,
   typicodeReducer,
   githubReducer,
+  comments: commentReducer,
   form: formReducer
 });
 
@@ -66,3 +71,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+
