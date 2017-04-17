@@ -13,7 +13,8 @@ import promise from 'redux-promise'
 import Helper from './components/'
 import TodoApp, {todosReducer, todos, visibilityFilter} from './todoApp'
 import List, {reducers as step_9_reducers} from './step-9'
-import Delegate, {delegateReducer} from './components/delegate'
+import Typicode, {typicodeReducer} from './components/delegate_typicode'
+import Github, {githubReducer} from './components/delegate_github.js'
 
 // add More
 const Main = () => (
@@ -23,7 +24,8 @@ const Main = () => (
       <Route path='/about' component={Helper.About}/>
       <Route path='/todos' component={TodoApp}/>
       <Route path='/list' component={List}/>
-      <Route path='/delegate' component={Delegate}/>
+      <Route path='/typicode' component={Typicode}/>
+      <Route path='/github' component={Github}/>
       <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
   </main>
@@ -45,7 +47,8 @@ const rootReducer = combineReducers({
   todos,
   visibilityFilter,
   people: step_9_reducers,
-  delegateReducer,
+  typicodeReducer,
+  githubReducer,
   form: formReducer
 });
 

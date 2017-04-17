@@ -22,8 +22,7 @@ const loadJSON = () => {
 /**
  * {type: @@redux/UNIT}, {type: "@@redux/PROBE_UNKNOWN_ACTION_p.q.2.x.a.8.k"}...
  */
-export const delegateReducer = (state = [], action) => {
-  console.log('in delegateReducer', action);
+export const typicodeReducer = (state = [], action) => {
   switch (action.type) {
     case 'LOAD_DELEGATEPOST':
       return action.payload;
@@ -32,7 +31,7 @@ export const delegateReducer = (state = [], action) => {
   return state;
 }
 
-class Delegate extends Component {
+class Typicode extends Component {
 
   constructor(props) {
     super(props);
@@ -79,12 +78,12 @@ class Delegate extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  jsonpost: state.delegateReducer
+  jsonpost: state.typicodeReducer
 });
 
-Delegate = connect(mapStateToProps, {
+Typicode = connect(mapStateToProps, {
   loadJSON
-})(Delegate);
+})(Typicode);
 
-export default Delegate;
+export default Typicode;
 

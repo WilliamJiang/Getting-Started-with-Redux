@@ -24,7 +24,8 @@ export const Header = () => (
         <li><Link to='/list'>List</Link></li>
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/todos'>Todos</Link></li>
-        <li><Link to='/delegate'>Delegate</Link></li>
+        <li><Link to='/typicode'>Typicode</Link></li>
+        <li><Link to='/github'>GitHub</Link></li>
       </ul>
     </nav>
   </header>
