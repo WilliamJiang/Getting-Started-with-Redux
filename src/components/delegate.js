@@ -3,10 +3,30 @@ import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux'
 import superagent from 'superagent'
 
+//1. createAction
+const loadJSON = () => {
+  const url = 'https://jsonplaceholder.typicode.com/posts';
+  return (dispatch) => {
+    superagent
+      .get(url)
+      .set('Accept', 'application/json')
+      .end((err, res) => {
+        if (err) throw err;
+        //console.log('return from jsonplaceholder: ', JSON.stringify(res.body));
+        dispatch({type: 'LOAD_DELEGATEPOST', payload: res.body})
+      });
+  }
+}
+
+//2. reducer:
+/**
+ * {type: @@redux/UNIT}, {type: "@@redux/PROBE_UNKNOWN_ACTION_p.q.2.x.a.8.k"}...
+ */
 export const delegateReducer = (state = [], action) => {
+  console.log('in delegateReducer', action);
   switch (action.type) {
     case 'LOAD_DELEGATEPOST':
-      return JSON.parse(action.payload);
+      return action.payload;
       break;
   }
   return state;
@@ -29,31 +49,30 @@ class Delegate extends Component {
    * All API requests MUST include a valid User-Agent header. Requests with no User-Agent header will be rejected.
    * We request that you use your GitHub username, or the name of your application, for the User-Agent header value.
    */
-  loadJSON() {
-    const url = 'https://jsonplaceholder.typicode.com/posts';
-
-//    return (dispatch, getState) => {
-      console.log('does thunk capture hee???', url);
-      superagent
-        .get(url)
-        .set('Accept', 'application/json')
-        .end((err, res) => {
-          if (err) throw err;
-          console.log('return from jsonplaceholder: ', res);
-          dispatch({type: 'LOAD_DELEGATEPOST', payload: res.body})
-        });
-//    }
-  }
 
   componentDidMount() {
-    this.loadJSON();
+    this.props.loadJSON();
   }
 
   render() {
-    console.log(this.props.jsonpost);
+    if (!this.props.jsonpost || this.props.jsonpost.length === 0) {
+      return (
+        <div className="well">
+          Load JSON....
+        </div>
+      )
+    }
+    const list = this.props.jsonpost.map((post, i) => (
+      <li className="list-group-item" key={post.userId + '_' + post.id}>
+        <h4>{post.title}</h4>
+
+        <p>{post.body}</p>
+      </li>
+    ))
     return (
-      <div className="row well">
-        Load JSON.
+      <div className="row container">
+        <h2>data from `https://jsonplaceholder.typicode.com/posts`</h2>
+        <ul className="list-group">{list}</ul>
       </div>
     )
   }
@@ -61,9 +80,11 @@ class Delegate extends Component {
 
 const mapStateToProps = (state) => ({
   jsonpost: state.delegateReducer
-})
+});
 
-Delegate = connect(mapStateToProps)(Delegate);
+Delegate = connect(mapStateToProps, {
+  loadJSON
+})(Delegate);
 
 export default Delegate;
 
