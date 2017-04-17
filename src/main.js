@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { createStore, applyMiddleware, combineReducers } from 'redux'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
@@ -17,9 +17,32 @@ import CommentList, {commentReducer} from './components/step8mini'
 // use step-8 as an independant app, or use main+step8mini together.
 // step8mini.js just copy step-8.js.
 import { reducer as formReducer } from 'redux-form'
+import { Link } from 'react-router-dom'
 
 
-// add More
+const Header = () => (
+  <header>
+    <nav className="navbar navbar-inverse navbar-fixed-top">
+      <ul className="nav navbar-nav">
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/todos'>Todos</Link></li>
+        <li><Link to='/list'>BootstrapTable</Link></li>
+        <li><Link to='/comments'>ReactBootstrapTable</Link></li>
+        <li><Link to='/about'>About</Link></li>
+        <li><Link to='/typicode'>Typicode</Link></li>
+        <li><Link to='/github'>GitHub</Link></li>
+        <li><Link to='/login'>Login</Link></li>
+      </ul>
+    </nav>
+  </header>
+);
+
+const Footer = ({footer}) => (
+  <footer>
+    <div {...footer}>&copy; william jiang - 2017</div>
+  </footer>
+);
+
 const Main = () => (
   <main style={{marginTop:60}}>
     <Switch>
@@ -38,9 +61,9 @@ const Main = () => (
 // in case App = List + AddForm + Footer + Navigator...
 const App = () => (
   <div className="container">
-    <Helper.Header />
+    <Header />
     <Main />
-    <Helper.Footer done={true} author='william jiang'/>
+    <Footer done={true} author='william jiang'/>
   </div>
 )
 
@@ -59,7 +82,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, promise)
 );
 
 //8. render
