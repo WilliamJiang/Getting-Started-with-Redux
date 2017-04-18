@@ -10,7 +10,8 @@ const getSrcEntry = (src_path => {
     '9': 'step-9.js',
     '10': 'step-10.js',
     'todo': 'todoApp.js',
-    'main': 'main.js'
+    'main': 'main.js',
+    'tictactoe': './ticTacToe/index.js'
   }
 
   return (entry) => appPath + '/' + entries[entry]

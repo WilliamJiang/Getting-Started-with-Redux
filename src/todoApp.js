@@ -75,7 +75,7 @@ export const visibilityFilter = (state = 'SHOW_ALL', action) => {
   }
 };
 
-export const todosReducer = combineReducers({
+export const todosReducer = ({
   todos,
   visibilityFilter
 });
@@ -222,13 +222,18 @@ const VisibleTodoList = connect(
   mapDispatchToProps
 )(TodoList);
 
-const TodoApp = () => (
-  <div className="row well">
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-);
+class TodoApp extends Component {
+  render() {
+    debugger;
+    return (
+      <div className="row well">
+        <AddTodo />
+        <VisibleTodoList />
+        <Footer />
+      </div>
+    );
+  }
+}
 //const Provider = {props} => props.children;
 export default TodoApp;
 

@@ -66,7 +66,6 @@ the main entry: todoApp.js
 currently: todoApp.js === step-7.js, the complete implementation of todoApp.
 
 
-
 ### 8. branch `step-8`:
   brand new version:  step-8: different from step-7. out of original todos. add step-8.js to test redux. it basically works.
 
@@ -104,6 +103,10 @@ ReactiveX, RxJs example.
 - create src/ folder, put the .js into, easily search and manage.
 - react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
 - redux-form
+- add tictactoe, 2 issues:
+  (1) wrong route: <Route path='/ttt' comment={TicTacToeApp}/>, no warning, I spent much time to correct `comment` to `component`
+  (2) copy from original repository, only 1 place to change: reducer. notice instead of createStore(reducer), `reducer` now
+    is a {...} instead of 1 function. 
 
 
 ## Advance

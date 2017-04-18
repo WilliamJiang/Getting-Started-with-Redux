@@ -1,15 +1,17 @@
 /**
  * inherit from step-8
  */
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import 'babel-polyfill'
+import React from 'react'
+import { render } from 'react-dom'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
+import { devToolsEnhancer } from 'redux-devtools-extension';
 import Helper from './components/'
-import TodoApp, {todosReducer, todos, visibilityFilter} from './todoApp'
+import TodoApp, {visibilityFilter, todos} from './todoApp'
 import List, {reducers as step_9_reducers} from './step-9'
 import Typicode, {typicodeReducer} from './components/delegate_typicode'
 import Github, {githubReducer} from './components/delegate_github.js'
@@ -18,7 +20,11 @@ import CommentList, {commentReducer} from './components/step8mini'
 // step8mini.js just copy step-8.js.
 import { reducer as formReducer } from 'redux-form'
 import { Link } from 'react-router-dom'
-
+import TicTacToeApp from './ticTacToe/container'
+import ticTacToeReducer from './ticTacToe/reducer'
+import VoteApp from './votes/container'
+import voteReducer from './votes/reducer'
+import './ticTacToe/style.css'
 
 const Header = () => (
   <header>
@@ -31,6 +37,8 @@ const Header = () => (
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/typicode'>Typicode</Link></li>
         <li><Link to='/github'>GitHub</Link></li>
+        <li><Link to='/vote'>Vote</Link></li>
+        <li><Link to='/ttt'>TicTacToe</Link></li>
         <li><Link to='/login'>Login</Link></li>
       </ul>
     </nav>
@@ -53,6 +61,8 @@ const Main = () => (
       <Route path='/typicode' component={Typicode}/>
       <Route path='/github' component={Github}/>
       <Route path='/comments' component={CommentList}/>
+      <Route path='/vote' component={VoteApp}/>
+      <Route path='/ttt' component={TicTacToeApp}/>
       <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
   </main>
@@ -77,16 +87,18 @@ const rootReducer = combineReducers({
   typicodeReducer,
   githubReducer,
   comments: commentReducer,
-  form: formReducer
+  form: formReducer,
+  tttr: ticTacToeReducer,
+  voteReducer
 });
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(thunk, promise)
+  compose(applyMiddleware(thunk, promise), devToolsEnhancer())
 );
 
 //8. render
-ReactDOM.render(
+render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
