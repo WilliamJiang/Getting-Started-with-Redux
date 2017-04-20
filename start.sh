@@ -1,5 +1,5 @@
 #!/bin/bash
 
-webpack-dev-server
+./node_modules/./bin/webpack-dev-server
 
 #open http://localhost:8080

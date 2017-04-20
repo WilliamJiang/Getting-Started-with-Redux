@@ -69,7 +69,7 @@ currently: todoApp.js === step-7.js, the complete implementation of todoApp.
 ### 8. branch `step-8`:
   brand new version:  step-8: different from step-7. out of original todos. add step-8.js to test redux. it basically works.
 
-### 9. step-9
+### 9. branch `step-9`
 
 a simple App for CRUD: list fake-people on the fly.
 
@@ -87,18 +87,21 @@ It works properly. Good Stuff.
 
 npm install redux-devtools
 
-### 10. step-10:
+### 10. branch `main`
 
-### main:
-
-merge individual branches together by adding `tabs`
-
+- merge individual branches together by adding `tabs`
+- `npm install -S webpack-dev-server` so all-inclusive
+  to start the app, just run `./node_modules/.bin/webpack-dev-server `
+- `npm install -D eslint` for syntax checking
 
 ReactiveX, RxJs example.
 
 ```bash
   npm i -S rxjs@5
 ```
+
+
+### More steps on `main` branch
 
 - create src/ folder, put the .js into, easily search and manage.
 - react-router vs. react-router-dom: https://reacttraining.com/react-router/web/guides/quick-start
@@ -109,7 +112,7 @@ ReactiveX, RxJs example.
     is a {...} instead of 1 function. 
 
 
-## Advance
+## Advantage
 
 1. only 1 js file - all inclusive: todoApp.js
 2. this could be the mini-structure of a react-redux app.
@@ -122,10 +125,11 @@ ReactiveX, RxJs example.
 - step-1: simple counter with `subscribe` and no component.
 - step-2: simple counter with component
 
-## Reference:
 
+## Reference:
 
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
 - https://redux-observable.js.org/
 - http://reactivex.io/rxjs/manual/tutorial.html#react
 - http://redux-form.com/6.6.2/
+
