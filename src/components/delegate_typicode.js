@@ -1,21 +1,23 @@
 import React, {Component}  from 'react'
 import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux'
-import superagent from 'superagent'
+
+require('es6-promise').polyfill();
+import fetch from 'isomorphic-fetch';
+// use isomorphic-fetch instead of superagent
 
 //1. createAction
-const loadJSON = () => {
-  const url = 'https://jsonplaceholder.typicode.com/posts';
-  return (dispatch) => {
-    superagent
-      .get(url)
-      .set('Accept', 'application/json')
-      .end((err, res) => {
-        if (err) throw err;
-        //console.log('return from jsonplaceholder: ', JSON.stringify(res.body));
-        dispatch({type: 'LOAD_DELEGATEPOST', payload: res.body})
-      });
-  }
+const loadJSON = () => (dispatch) => {
+  return fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => {
+      if (res.status >= 400) {
+        throw new Error("Bad response from server");
+      }
+      return res.json();
+    })
+    .then(data => {
+      dispatch({type: 'LOAD_DELEGATEPOST', payload: data})
+    });
 }
 
 //2. reducer:

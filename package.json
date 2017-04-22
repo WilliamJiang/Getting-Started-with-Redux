@@ -11,7 +11,9 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "es6-promise": "^4.1.0",
     "faker": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
     "node-uuid": "^1.4.8",

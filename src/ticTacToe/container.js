@@ -3,22 +3,20 @@ import { connect } from 'react-redux';
 import { markSquare, clearBoard } from './action';
 import {Grid, GameStatus} from './component'
 
-class Board extends Component {
-  render() {
-    return <Grid board={this.props.board} onSquareClick={this.props.markSquare}/>
-  }
-}
+let Board = ({board, markSquare}) => (
+ <Grid board={board} onSquareClick={markSquare}/>
+);
 Board = connect(
-  (state) => ({board: state.tttr.board}),
+  state => ({board: state.tttr.board}),
   {markSquare}
-)(Board)
+)(Board);
+
 
 class PlayerInfo extends Component {
   render() {
     return <GameStatus {...this.props} />
   }
 }
-
 PlayerInfo = connect(
   (state) => ({
     turn: state.tttr.turn,

@@ -11,7 +11,8 @@ const getSrcEntry = (src_path => {
     '10': 'step-10.js',
     'todo': 'todoApp.js',
     'main': 'main.js',
-    'tictactoe': './ticTacToe/index.js'
+    'tictactoe': './ticTacToe/container.js',
+    'demo': '../demo/redux-single-line-of-code-rxjs.js'
   }
 
   return (entry) => appPath + '/' + entries[entry]
