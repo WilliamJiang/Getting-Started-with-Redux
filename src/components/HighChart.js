@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactHighCharts from 'react-highcharts'
 
+// just react, no redux.
 class HighChart extends Component {
 
   constructor(props) {
