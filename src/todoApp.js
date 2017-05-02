@@ -224,7 +224,6 @@ const VisibleTodoList = connect(
 
 class TodoApp extends Component {
   render() {
-    debugger;
     return (
       <div className="row well">
         <AddTodo />

@@ -10,16 +10,19 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import { devToolsEnhancer } from 'redux-devtools-extension';
-import Helper from './components/'
-import TodoApp, {visibilityFilter, todos} from './todoApp'
-import List, {reducers as step_9_reducers} from './step-9'
-import Typicode, {typicodeReducer} from './components/delegate_typicode'
-import Github, {githubReducer} from './components/delegate_github.js'
-import CommentList, {commentReducer} from './components/step8mini'
-// use step-8 as an independant app, or use main+step8mini together.
-// step8mini.js just copy step-8.js.
+
 import { reducer as formReducer } from 'redux-form'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
+import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap';
+
+import Helper from './components/'
+import CommentList, {commentReducer} from './components/step8mini'
+import List, {reducers as step_9_reducers} from './step-9'
+import TodoApp, {visibilityFilter, todos} from './todoApp'
+import Github, {githubReducer} from './components/delegate_github.js'
+import Typicode, {typicodeReducer} from './components/delegate_typicode'
+// use step-8 as an independant app, or use main+step8mini together. step8mini.js just copy step-8.js.
 import TicTacToeApp from './ticTacToe/container'
 import ticTacToeReducer from './ticTacToe/reducer'
 import './ticTacToe/style.css'
@@ -27,26 +30,72 @@ import VoteApp from './votes/container'
 import voteReducer from './votes/reducer'
 import UBSApp from './ubs/UBSApp'
 import ubsReducer from './ubs/reducer'
+import HighChart from './components/HighChart'
 
-const Header = () => (
-  <header>
-    <nav className="navbar navbar-inverse navbar-fixed-top">
-      <ul className="nav navbar-nav">
-        <li><Link to='/'>Home</Link></li>
-        <li><Link to='/todos'>Todos</Link></li>
-        <li><Link to='/list'>BootstrapTable</Link></li>
-        <li><Link to='/comments'>ReactBootstrapTable</Link></li>
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/typicode'>Typicode</Link></li>
-        <li><Link to='/github'>GitHub</Link></li>
-        <li><Link to='/ubs'>IRS</Link></li>
-        <li><Link to='/vote'>Vote</Link></li>
-        <li><Link to='/ttt'>TicTacToe</Link></li>
-        <li><Link to='/login'>Login</Link></li>
-      </ul>
-    </nav>
+const Header = (props) => (
+  <header className="app">
+    <Navbar fixedTop>
+      <Navbar.Header>
+        <Navbar.Brand>
+          <NavLink to="/" activeStyle={{color: '#33e0ff'}}>
+            <div className="brand"/>
+            Home</NavLink>
+        </Navbar.Brand>
+        <Navbar.Toggle/>
+      </Navbar.Header>
+
+      <Navbar.Collapse key={0}>
+        <Nav navbar>
+          <LinkContainer to="/list">
+            <NavItem key={1}>BootstrapTable</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/comments">
+            <NavItem key={2}>ReactBootstrapTable</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/todos">
+            <NavItem key={3}>Todos</NavItem>
+          </LinkContainer>
+          <LinkContainer to="/about">
+            <NavItem key={4}>About</NavItem>
+          </LinkContainer>
+
+          <NavDropdown key={5} title="Delegate" id="delegate-nav-dropdown">
+            <LinkContainer to="/github">
+              <MenuItem key={5.1}>GitHub</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/typicode">
+              <MenuItem key={5.2}>Typicode</MenuItem>
+            </LinkContainer>
+          </NavDropdown>
+
+          <NavDropdown key={6} title="Demos" id="demo-nav-dropdown">
+            <LinkContainer to="/ttt">
+              <MenuItem key={6.1}>TicTacToe</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/ubs">
+              <MenuItem key={6.2}>IRS</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/vote">
+              <MenuItem key={6.3}>Vote</MenuItem>
+            </LinkContainer>
+            <LinkContainer to="/highchart">
+              <MenuItem key={6.4}>HighChart</MenuItem>
+            </LinkContainer>
+            <MenuItem divider/>
+            <LinkContainer to="/more">
+              <MenuItem key={6.4}>More...</MenuItem>
+            </LinkContainer>
+          </NavDropdown>
+
+          <LinkContainer to="/login">
+            <NavItem key={7}>Login</NavItem>
+          </LinkContainer>
+        </Nav>
+
+      </Navbar.Collapse>
+    </Navbar>
   </header>
-);
+)
 
 const Footer = ({footer}) => (
   <footer>
@@ -68,6 +117,7 @@ const Main = () => (
       <Route path='/ubs' component={UBSApp}/>
       <Route path='/ttt' component={TicTacToeApp}/>
       <Route path='/login' component={Helper.LoginForm}/>
+      <Route path="/highchart" component={HighChart}/>
     </Switch>
   </main>
 )
