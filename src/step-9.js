@@ -32,6 +32,8 @@ const sortAction = (sortBy, seq) => {
     seq: seq
   }
 };
+
+//TODO
 const addAction = () => ({
   type: 'ADD_PERSON'
 });

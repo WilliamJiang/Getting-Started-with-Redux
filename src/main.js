@@ -22,9 +22,11 @@ import { reducer as formReducer } from 'redux-form'
 import { Link } from 'react-router-dom'
 import TicTacToeApp from './ticTacToe/container'
 import ticTacToeReducer from './ticTacToe/reducer'
+import './ticTacToe/style.css'
 import VoteApp from './votes/container'
 import voteReducer from './votes/reducer'
-import './ticTacToe/style.css'
+import UBSApp from './ubs/UBSApp'
+import ubsReducer from './ubs/reducer'
 
 const Header = () => (
   <header>
@@ -37,6 +39,7 @@ const Header = () => (
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/typicode'>Typicode</Link></li>
         <li><Link to='/github'>GitHub</Link></li>
+        <li><Link to='/ubs'>IRS</Link></li>
         <li><Link to='/vote'>Vote</Link></li>
         <li><Link to='/ttt'>TicTacToe</Link></li>
         <li><Link to='/login'>Login</Link></li>
@@ -62,6 +65,7 @@ const Main = () => (
       <Route path='/github' component={Github}/>
       <Route path='/comments' component={CommentList}/>
       <Route path='/vote' component={VoteApp}/>
+      <Route path='/ubs' component={UBSApp}/>
       <Route path='/ttt' component={TicTacToeApp}/>
       <Route path='/login' component={Helper.LoginForm}/>
     </Switch>
@@ -89,7 +93,8 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   form: formReducer,
   tttr: ticTacToeReducer,
-  voteReducer
+  voteReducer,
+  ubsReducer
 });
 
 const store = createStore(

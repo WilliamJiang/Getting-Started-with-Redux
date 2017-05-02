@@ -11,7 +11,7 @@ class VoteApp extends Component {
   }
 }
 
-connect((state, ownProps) => ({
+VoteApp = connect((state, ownProps) => ({
     'voteProps': state.voteReducer
   }),
   {voteAction}
