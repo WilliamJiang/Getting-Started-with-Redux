@@ -31,6 +31,7 @@ import voteReducer from './votes/reducer'
 import UBSApp from './ubs/UBSApp'
 import ubsReducer from './ubs/reducer'
 import HighChart from './components/HighChart'
+import BullsFirst from "./bullsfirst/BullsFirstApp"
 
 const Header = (props) => (
   <header className="app">
@@ -66,6 +67,10 @@ const Header = (props) => (
             <LinkContainer to="/typicode">
               <MenuItem key={5.2}>Typicode</MenuItem>
             </LinkContainer>
+            <MenuItem divider/>
+            <LinkContainer to="/more">
+              <MenuItem key={6.9}>More...</MenuItem>
+            </LinkContainer>
           </NavDropdown>
 
           <NavDropdown key={6} title="Demos" id="demo-nav-dropdown">
@@ -79,11 +84,10 @@ const Header = (props) => (
               <MenuItem key={6.3}>Vote</MenuItem>
             </LinkContainer>
             <LinkContainer to="/highchart">
-              <MenuItem key={6.4}>HighChart</MenuItem>
+              <MenuItem key={6.4}>High Chart</MenuItem>
             </LinkContainer>
-            <MenuItem divider/>
-            <LinkContainer to="/more">
-              <MenuItem key={6.4}>More...</MenuItem>
+            <LinkContainer to="/bullsfirst">
+              <MenuItem key={6.5}>Bulls First</MenuItem>
             </LinkContainer>
           </NavDropdown>
 
@@ -118,6 +122,7 @@ const Main = () => (
       <Route path='/ttt' component={TicTacToeApp}/>
       <Route path='/login' component={Helper.LoginForm}/>
       <Route path="/highchart" component={HighChart}/>
+      <Route path="/bullsfirst" component={BullsFirst}/>
     </Switch>
   </main>
 )
