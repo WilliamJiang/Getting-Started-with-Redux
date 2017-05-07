@@ -6,7 +6,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import { devToolsEnhancer } from 'redux-devtools-extension';
@@ -56,15 +56,9 @@ const Header = (props) => (
           <LinkContainer to="/todos">
             <NavItem key={3}>Todos</NavItem>
           </LinkContainer>
-
-          <NavDropdown key={4} title="Menu" id="menu-nav-dropdown">
-            <LinkContainer to="/about">
-              <NavItem key={4.1}>About</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/topics">
-              <NavItem key={4.2}>Topics</NavItem>
-            </LinkContainer>
-          </NavDropdown>
+          <LinkContainer to="/about">
+            <NavItem key={4}>About</NavItem>
+          </LinkContainer>
 
           <NavDropdown key={5} title="Delegate" id="delegate-nav-dropdown">
             <LinkContainer to="/github">
@@ -113,15 +107,11 @@ const Footer = ({footer}) => (
   </footer>
 );
 
-// TODO: use helpers/todo_menus.js:
-//<Route component={Helper.NoMatch}/>
 const Main = () => (
   <main style={{marginTop:60}}>
     <Switch>
       <Route exact path='/' component={Helper.Home}/>
       <Route path='/about' component={Helper.About}/>
-      <Route path='/contact' component={Helper.Contact}/>
-      <Route path='/topics' component={Helper.Topics}/>
       <Route path='/todos' component={TodoApp}/>
       <Route path='/list' component={List}/>
       <Route path='/typicode' component={Typicode}/>
@@ -133,8 +123,6 @@ const Main = () => (
       <Route path='/login' component={Helper.LoginForm}/>
       <Route path="/highchart" component={HighChart}/>
       <Route path="/bullsfirst" component={BullsFirst}/>
-      <Route path="/notfound" component={Helper.NoMatch}/>
-      <Redirect from="*" to="/notfound"/>
     </Switch>
   </main>
 )
@@ -172,9 +160,9 @@ const store = createStore(
 //8. render
 render(
   <Provider store={store}>
-    <Router>
+    <BrowserRouter>
       <App />
-    </Router>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 );

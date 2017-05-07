@@ -3,7 +3,10 @@ import {
   Header,
   Footer,
   Home,
-  About
+  About,
+  Topics,
+  Contact,
+  NoMatch
 } from './common';
 import LoginForm from './loginForm'
 
@@ -13,5 +16,8 @@ export default {
   Footer,
   Home,
   About,
+  Topics,
+  Contact,
+  NoMatch,
   LoginForm
 }
