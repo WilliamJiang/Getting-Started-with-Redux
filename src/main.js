@@ -26,8 +26,6 @@ import Typicode, {typicodeReducer} from './components/delegate_typicode'
 import TicTacToeApp from './ticTacToe/container'
 import ticTacToeReducer from './ticTacToe/reducer'
 import './ticTacToe/style.css'
-import VoteApp from './votes/container'
-import voteReducer from './votes/reducer'
 import UBSApp from './ubs/UBSApp'
 import ubsReducer from './ubs/reducer'
 import HighChart from './components/HighChart'
@@ -86,9 +84,6 @@ const Header = (props) => (
             <LinkContainer to="/ubs">
               <MenuItem key={6.2}>IRS</MenuItem>
             </LinkContainer>
-            <LinkContainer to="/vote">
-              <MenuItem key={6.3}>Vote</MenuItem>
-            </LinkContainer>
             <LinkContainer to="/highchart">
               <MenuItem key={6.4}>High Chart</MenuItem>
             </LinkContainer>
@@ -127,7 +122,6 @@ const Main = () => (
       <Route path='/typicode' component={Typicode}/>
       <Route path='/github' component={Github}/>
       <Route path='/comments' component={CommentList}/>
-      <Route path='/vote' component={VoteApp}/>
       <Route path='/ubs' component={UBSApp}/>
       <Route path='/ttt' component={TicTacToeApp}/>
       <Route path='/login' component={Helper.LoginForm}/>
@@ -160,7 +154,6 @@ const rootReducer = combineReducers({
   comments: commentReducer,
   form: formReducer,
   tttr: ticTacToeReducer,
-  voteReducer,
   ubsReducer
 });
 

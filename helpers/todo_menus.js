@@ -22,7 +22,6 @@ menuConfig = [
     'dropdown': [
       {'nav': ['TicTacToe', '/ttt', 'TicTacToeApp']},
       {'nav': ['IRS', '/ubs', 'UBSApp']},
-      {'nav': ['Vote', '/vote', 'VoteApp']},
       {'nav': ['High Chart', '/highchart', 'HighChart']},
       {'nav': ['Bulls First', '/bullsfirst', 'BullsFirst']},
     ]

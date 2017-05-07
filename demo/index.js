@@ -11,7 +11,6 @@ const Header1 = () => (
         <li><Link to='/typicode'>Typicode</Link></li>
         <li><Link to='/github'>GitHub</Link></li>
         <li><Link to='/ubs'>IRS</Link></li>
-        <li><Link to='/vote'>Vote</Link></li>
         <li><Link to='/ttt'>TicTacToe</Link></li>
         <li><Link to='/login'>Login</Link></li>
       </ul>
