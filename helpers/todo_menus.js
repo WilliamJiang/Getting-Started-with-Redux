@@ -1,6 +1,6 @@
 // react-router-v4 + menu-config
 
-menuConfig = [
+const menuConfig = [
   {'fixTop': ['Home', '/', 'Home']},
   {'nav': ['BootstrapTable', '/list', 'List']},
   {'nav': ['ReactBootstrapTable', '/comments', 'CommentList']},

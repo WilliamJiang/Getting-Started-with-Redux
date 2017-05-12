@@ -25,7 +25,7 @@ import Typicode, {typicodeReducer} from './components/delegate_typicode'
 // use step-8 as an independant app, or use main+step8mini together. step8mini.js just copy step-8.js.
 import TicTacToeApp from './ticTacToe/container'
 import ticTacToeReducer from './ticTacToe/reducer'
-import './ticTacToe/style.css'
+import './style.css'
 import UBSApp from './ubs/UBSApp'
 import ubsReducer from './ubs/reducer'
 import HighChart from './components/HighChart'
@@ -102,11 +102,7 @@ const Header = (props) => (
   </header>
 )
 
-const Footer = ({footer}) => (
-  <footer>
-    <div {...footer}>&copy; william jiang - 2017</div>
-  </footer>
-);
+import Footer from './components/Footer'
 
 // TODO: use helpers/todo_menus.js:
 //<Route component={Helper.NoMatch}/>

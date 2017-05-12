@@ -1,9 +1,22 @@
+/* flexbox */
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  background-color: lightgrey;
+}
+
+.flex-item {
+  margin: 10px;
+  text-align: center;
+}
+
 .tictactoe td {
   height: 120px;
   width: 100px;
   border: 1px solid black;
 }
 
+/* tictactoe css */
 .tictactoe table {
   table-layout: fixed;
 }

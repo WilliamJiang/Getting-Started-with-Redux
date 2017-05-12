@@ -6,13 +6,14 @@ const SOURCE_DIR = 'src';
 const getSrcEntry = (src_path => {
   var appPath = path.join(__dirname, src_path);
   const entries = {
+    '1': 'step-1.js',
+    '2': 'step-2.js',
     '8': 'step-8.js',
     '9': 'step-9.js',
     '10': 'step-10.js',
     'todo': 'todoApp.js',
     'main': 'main.js',
-    'tictactoe': './ticTacToe/container.js',
-    'demo': '../demo/redux-single-line-of-code-rxjs.js'
+    'reddit': './reddit/index.js',
   }
 
   return (entry) => appPath + '/' + entries[entry]
@@ -20,8 +21,14 @@ const getSrcEntry = (src_path => {
 
 module.exports = {
   devtool: 'inline-source-map',
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ],
   entry: [
-    getSrcEntry('main')
+    'webpack-hot-middleware/client',
+    getSrcEntry('main') //reddit
   ],
   output: {
     path: path.join(__dirname, 'dist'),
